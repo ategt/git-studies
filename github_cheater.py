@@ -4,6 +4,7 @@ from datetime import datetime, date, timedelta
 from os import path
 import random
 import os
+import sys
 
 from faker import Faker
 fake = Faker()
@@ -72,3 +73,6 @@ def execute(count, dirname, file = 'time', day_limit = DAYS_TO_GENERATE):
         createCommitInPast(file, mostly_random_date, fake.text().replace('\n',' '))
 
     tearDown(initial_dir)
+
+if __name__ == '__main__':
+    execute(int(sys.argv[1]), sys.argv[2] if len(sys.argv) > 2 else '.')
